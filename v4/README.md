@@ -15,6 +15,10 @@ Add these lines to your HTML `<head>`:
 
 Load `utils.css` AFTER your other styles if you need the utility classes to override your other CSS.
 
+## Browser support
+
+This framework uses relatively modern technologies, but should be fully functional on any browser version dating back to 2022. The aim is not and will never be to support legacy browsers.
+
 ## What's styled by default?
 
 By default, this framework styles the following elements with no changes needed:
@@ -28,6 +32,7 @@ By default, this framework styles the following elements with no changes needed:
 - Tables
 - Inline `<code>` elements
 - Code blocks formatted as `<pre><code> ... code ... </code></pre>`
+- Radio buttons and checkboxes
 
 ## Setting theme colors
 
@@ -35,7 +40,7 @@ This framework leans heavily into the configured base and accent colors, which a
 
 - The **base** color is used for all backgrounds, surfaces, borders, and normal text.
 - The **accent** color is used for links, buttons, and selected/active states.
-- The **danger** color is used to signify dangerous actions.
+- The **danger** color is used to signify dangerous or negative states or actions.
 - The **success** color is used to signify successful or positive states or actions.
 
 Configure the colors by placing this `<style>` block in your HTML `<head>`:
@@ -117,6 +122,16 @@ Combined with text size and color utility classes, this becomes a powerful, HTML
 ## Code blocks
 
 ### Syntax highlighting
+
+This framework has styling for the syntax-highlighting classes applied by Prism.js, which automatically identifies and highlights code blocks.
+
+Add Prism.js and its autoloader to your HTML `<head>`:
+
+```html
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/plugins/autoloader/prism-autoloader.min.js"></script>
+```
 
 ## Popovers
 
