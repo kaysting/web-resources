@@ -7,6 +7,8 @@ A modern, versatile CSS and JS UI framework for building clean, responsive UIs w
 Add these lines to your HTML `<head>`:
 
 ```html
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preconnect" href="https://src.kaysting.dev" crossorigin />
 <link rel="stylesheet" href="https://src.kaysting.dev/v4/css/base.css" />
 <link rel="stylesheet" href="https://src.kaysting.dev/v4/css/utils.css" />
