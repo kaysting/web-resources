@@ -5,16 +5,7 @@
 $spacing-steps: (1, 2, 4, 8, 12, 16, 24, 32, 48, 64);
 $text-sizes: (10, 12, 13, 14, 15, 16, 18, 20, 24, 28, 32, 36, 42, 48, 54, 64, 72, 96);
 $radii: (0, 2, 4, 8, 12, 16, 24);
-$font-weights: (
-    'thin': 200,
-    'light': 300,
-    'regular': 400,
-    'medium': 500,
-    'semibold': 600,
-    'bold': 700,
-    'extrabold': 800,
-    'black': 900
-);
+$font-weights: (100, 200, 300, 400, 500, 600, 700, 800, 900);
 
 // Standard responsive breakpoints
 $breakpoints: (
@@ -143,14 +134,14 @@ $align-space: (space-between, space-evenly, space-around);
 
 /* Text Sizes */
 @each $size in $text-sizes {
-    .text-#{$size} {
+    .text-size-#{$size} {
         font-size: #{$size}px;
     }
 }
 
 /* Font Weights */
-@each $name, $weight in $font-weights {
-    .text-#{$name} {
+@each $weight in $font-weights {
+    .text-weight-#{$weight} {
         font-weight: $weight;
     }
 }
