@@ -364,7 +364,7 @@ tbody th[scope='row'] {
     font-size: 14px;
 }
 
-.text-monospace,
+.font-monospace,
 code {
     font-family: var(--font-code), monospace;
 }
@@ -577,23 +577,23 @@ input[type='week']::-webkit-calendar-picker-indicator {
     font-variation-settings: 'FILL' 0;
 }
 
-.text-secondary {
+.color-secondary {
     color: var(--c-text-secondary);
 }
 
-.text-muted {
+.color-muted {
     color: var(--c-text-muted);
 }
 
-.text-danger {
+.color-danger {
     color: var(--c-text-danger);
 }
 
-.text-success {
+.color-success {
     color: var(--c-text-success);
 }
 
-.text-accent {
+.color-accent {
     color: var(--c-text-accent);
 }
 
