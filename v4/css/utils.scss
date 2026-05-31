@@ -1,0 +1,251 @@
+/* ==========================================================================
+   1. DESIGN TOKENS (Variables & Maps)
+   ========================================================================== */
+
+$spacing-steps: (1, 2, 4, 8, 12, 16, 24, 32, 48, 64);
+$text-sizes: (10, 12, 13, 14, 15, 16, 18, 20, 24, 28, 32, 36, 42, 48, 54, 64, 72, 96);
+$radii: (0, 2, 4, 8, 12, 16, 24);
+$font-weights: (
+    'thin': 200,
+    'light': 300,
+    'regular': 400,
+    'medium': 500,
+    'semibold': 600,
+    'bold': 700,
+    'extrabold': 800,
+    'black': 900
+);
+
+// Standard responsive breakpoints
+$breakpoints: (
+    'sm': 576px,
+    'md': 768px,
+    'lg': 992px,
+    'xl': 1200px
+);
+
+// Flex and grid system
+
+.flex {
+    display: flex;
+}
+.grid {
+    display: grid;
+}
+
+.flex.row {
+    flex-direction: row;
+}
+.flex.row-rev {
+    flex-direction: row-reverse;
+}
+.flex.col {
+    flex-direction: column;
+}
+.flex.col-rev {
+    flex-direction: column-reverse;
+}
+
+.flex-grow {
+    flex-grow: 1;
+}
+.flex-wrap {
+    flex-wrap: wrap;
+}
+.flex-no-shrink {
+    flex-shrink: 0;
+}
+
+.grid-dynamic {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(var(--size, 300px), 100%), 1fr));
+    gap: var(--gap, 8px);
+}
+
+/* 12-Column Grid System with Responsive Loops */
+.grid-12 {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 8px;
+
+    .col {
+        grid-column: span 12; // Default to full width
+    }
+
+    // Loop through breakpoints to generate responsive classes (.col-md-6, etc.)
+    @each $brk-name, $brk-width in $breakpoints {
+        @media (min-width: #{$brk-width}) {
+            @for $i from 1 through 12 {
+                .col-#{$brk-name}-#{$i} {
+                    grid-column: span #{$i};
+                }
+            }
+        }
+    }
+}
+
+$align-basic: (center, start, end, stretch);
+$align-space: (space-between, space-evenly, space-around);
+
+// Basic Alignments (items/content/justify)
+@each $val in $align-basic {
+    .align-items-#{$val},
+    .align-#{$val} {
+        align-items: $val;
+    }
+    .justify-items-#{$val} {
+        justify-items: $val;
+    }
+
+    // place-items doesn't strictly use 'stretch' often but it's valid
+    @if $val != 'stretch' {
+        .place-items-#{$val} {
+            place-items: $val;
+        }
+    }
+
+    .align-content-#{$val} {
+        align-content: $val;
+    }
+    .justify-content-#{$val},
+    .justify-#{$val} {
+        justify-content: $val;
+    }
+}
+
+// Spaced Alignments (content/justify only)
+@each $val in $align-space {
+    // Strip the "space-" prefix for the shorthand class name
+    $short: str-slice($val, 7);
+
+    .align-content-#{$val},
+    .align-#{$short} {
+        align-content: $val;
+    }
+    .justify-content-#{$val},
+    .justify-#{$short} {
+        justify-content: $val;
+    }
+
+    @if $val == 'space-between' {
+        .place-content-between {
+            place-content: $val;
+        }
+    }
+}
+
+/* Spacing (Gaps) */
+@each $step in $spacing-steps {
+    .gap-#{$step} {
+        gap: #{$step}px;
+    }
+}
+
+/* Text Sizes */
+@each $size in $text-sizes {
+    .text-#{$size} {
+        font-size: #{$size}px;
+    }
+}
+
+/* Font Weights */
+@each $name, $weight in $font-weights {
+    .text-#{$name} {
+        font-weight: $weight;
+    }
+}
+
+/* Border Radii */
+@each $radius in $radii {
+    .rounded-#{$radius} {
+        border-radius: #{$radius}px;
+    }
+}
+
+/* Positions */
+$positions: (relative, absolute, sticky);
+@each $pos in $positions {
+    .p-#{$pos} {
+        position: $pos;
+    }
+}
+
+/* Text Alignments */
+$text-aligns: (center, right, left);
+@each $align in $text-aligns {
+    .text-#{$align} {
+        text-align: $align;
+    }
+}
+
+/* Zero offsets */
+.left-0 {
+    left: 0;
+}
+.right-0 {
+    right: 0;
+}
+.top-0 {
+    top: 0;
+}
+.bottom-0 {
+    bottom: 0;
+}
+
+/* Sizing */
+.w-full {
+    width: 100%;
+}
+.h-full {
+    height: 100%;
+}
+.object-cover {
+    object-fit: cover;
+}
+
+/* Text wrapping */
+.nowrap {
+    white-space: nowrap;
+}
+.text-ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+// Interaction
+.overflow-hidden {
+    overflow: hidden;
+}
+.no-margin {
+    margin: 0px !important;
+}
+.no-padding {
+    padding: 0px !important;
+}
+.no-select {
+    user-select: none;
+}
+.no-events {
+    pointer-events: none;
+}
+
+// Transitions
+.ease-100 {
+    transition: 0.1s ease-in-out;
+}
+.ease-200 {
+    transition: 0.2s ease-in-out;
+}
+
+// Image masking
+.img-mask {
+    font-family: sans-serif;
+    background-color: currentColor;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-position: center;
+    mask-position: center;
+    content: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
+}

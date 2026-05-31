@@ -1,4 +1,3 @@
-
 /**
  * Generates a random string of a desired length, containing any of the desired characters.
  * @param {number} length The resulting string's length
@@ -8,7 +7,7 @@
 function randomString(length, chars = '0123456789abcdefghijklmnopqrstuvwxyz') {
     let str = '';
     for (let i = 0; i < length; i++) {
-        str += chars[randomInt(0, chars.length-1)];
+        str += chars[randomInt(0, chars.length - 1)];
     }
     return str;
 }
@@ -28,8 +27,8 @@ function randomHex(length = 8) {
  * @param {number} max The maximum
  * @returns {number} The resulting integer
  */
-function randomInt(min, max) { 
-    return Math.round(min+(Math.random()*(max-min)));
+function randomInt(min, max) {
+    return Math.round(min + Math.random() * (max - min));
 }
 
 /**
@@ -39,7 +38,7 @@ function randomInt(min, max) {
  * @returns {number} The resulting float
  */
 function randomFloat(min, max) {
-    return min+(Math.random()*(max-min));
+    return min + Math.random() * (max - min);
 }
 
 /**
@@ -47,7 +46,7 @@ function randomFloat(min, max) {
  * @param {array} arr The input array
  * @returns {*} A randomly selected array element
  */
-const getRandomElement = (arr) => arr[(Math.ceil(Math.random()*arr.length)-1)];
+const getRandomElement = arr => arr[Math.ceil(Math.random() * arr.length) - 1];
 
 /**
  * @typedef itemWithWeight
@@ -59,15 +58,15 @@ const getRandomElement = (arr) => arr[(Math.ceil(Math.random()*arr.length)-1)];
  * @param {itemWithWeight[]} args An array of items and their weights
  * @returns A randomly selected value
  */
-const getRandomWeighted = (args) => {
+const getRandomWeighted = args => {
     // Get the total weight
     let total = 0;
-    args.forEach((arg) => {
+    args.forEach(arg => {
         total += arg.weight;
     });
     // Sort options from lightest to heaviest
     args.sort((a, b) => {
-        return a.weight-b.weight;
+        return a.weight - b.weight;
     });
     // Get our random number
     const rand = randomFloat(0, total);
@@ -78,7 +77,7 @@ const getRandomWeighted = (args) => {
         num += arg.weight;
         if (rand < num) return arg.value;
     }
-}
+};
 
 /**
  * Keeps a number within a range by preventing it from going above/below its maximum/minimum.
@@ -122,7 +121,7 @@ function roundSmart(number, decimalPlaces = 0) {
  * @param {string} s The input string
  * @returns {String[]} An array of words
  */
-function getWords(s){
+function getWords(s) {
     s = s.replace(/(^\s*)|(\s*$)/gi, '');
     s = s.replace(/[ ]{2,}/gi, ' ');
     s = s.replace(/\n/g, ' ');
@@ -133,7 +132,7 @@ function getWords(s){
  * @param {string} s The input string
  * @returns {number} The number of words
  */
-function countWords(s){
+function countWords(s) {
     return getWords(s).length;
 }
 
@@ -155,7 +154,7 @@ function shuffle(arr) {
     let i = 0;
     while (i < arr.length) {
         let tmp = arr[i];
-        let num = Math.round(Math.random()*(arr.length-1));
+        let num = Math.round(Math.random() * (arr.length - 1));
         arr[i] = arr[num];
         arr[num] = tmp;
         i++;
@@ -183,8 +182,8 @@ function formatSeconds(s) {
     }
     seconds = s;
     let timeString = '';
-    timeString += (hours > 0) ? hours.toString() + ':' : '';
-    timeString += minutes.toString().padStart((hours > 0) ? 2 : 1, '0') + ':';
+    timeString += hours > 0 ? hours.toString() + ':' : '';
+    timeString += minutes.toString().padStart(hours > 0 ? 2 : 1, '0') + ':';
     timeString += seconds.toString().padStart(2, '0');
     return timeString;
 }
@@ -196,7 +195,7 @@ function formatSeconds(s) {
  */
 function getAgeFromDate(date) {
     const now = new Date();
-    let age = now.getFullYear()-date.getFullYear();
+    let age = now.getFullYear() - date.getFullYear();
     if (now.getMonth() < date.getMonth() || (now.getMonth() == date.getMonth() && now.getDate() < date.getDate())) {
         age--;
     }
@@ -210,26 +209,31 @@ function getAgeFromDate(date) {
  * @returns {string} The resulting relative description.
  */
 function getRelativeDate(target, anchor = Date.now()) {
-    const isFuture = (anchor-target < 0) ? true : false;
-    let diff = Math.abs(anchor-target);
-    diff = Math.round(diff/1000);
-    if (diff < 120) // Less than 120 seconds
-        return (isFuture) ? `In a moment` : `Moments ago`;
-    diff = Math.round(diff/60);
-    if (diff < 120) // Less than 120 minutes
-        return (isFuture) ? `${diff} mins from now` : `${diff} mins ago`;
-    diff = Math.round(diff/60);
-    if (diff < 72) // Less than 72 hours
-        return (isFuture) ? `${diff} hours from now` : `${diff} hours ago`;
-    diff = Math.round(diff/24);
+    const isFuture = anchor - target < 0 ? true : false;
+    let diff = Math.abs(anchor - target);
+    diff = Math.round(diff / 1000);
+    if (diff < 120)
+        // Less than 120 seconds
+        return isFuture ? `In a moment` : `Moments ago`;
+    diff = Math.round(diff / 60);
+    if (diff < 120)
+        // Less than 120 minutes
+        return isFuture ? `${diff} mins from now` : `${diff} mins ago`;
+    diff = Math.round(diff / 60);
+    if (diff < 72)
+        // Less than 72 hours
+        return isFuture ? `${diff} hours from now` : `${diff} hours ago`;
+    diff = Math.round(diff / 24);
     const days = diff;
-    if (diff < 90) // Less than 90 days
-        return (isFuture) ? `${diff} days from now` : `${diff} days ago`;
-    diff = Math.round(diff/30.43685);
-    if (diff < 36) // Less than 36 months
-        return (isFuture) ? `${diff} months from now` : `${diff} months ago`;
-    diff = Math.round(days/365.2422);
-    return (isFuture) ? `${diff} years from now` : `${diff} years ago`;
+    if (diff < 90)
+        // Less than 90 days
+        return isFuture ? `${diff} days from now` : `${diff} days ago`;
+    diff = Math.round(diff / 30.43685);
+    if (diff < 36)
+        // Less than 36 months
+        return isFuture ? `${diff} months from now` : `${diff} months ago`;
+    diff = Math.round(days / 365.2422);
+    return isFuture ? `${diff} years from now` : `${diff} years ago`;
 }
 
 /**
@@ -240,14 +244,14 @@ function getRelativeDate(target, anchor = Date.now()) {
 function formatSize(bytes) {
     if (bytes < 1000) return `${bytes} B`;
     bytes /= 1024;
-    if (bytes < (1000)) return `${roundSmart(bytes, 0)} KB`;
+    if (bytes < 1000) return `${roundSmart(bytes, 0)} KB`;
     bytes /= 1024;
-    if (bytes < (1000)) return `${roundSmart(bytes, 1)} MB`;
+    if (bytes < 1000) return `${roundSmart(bytes, 1)} MB`;
     bytes /= 1024;
-    if (bytes < (1000)) return `${roundSmart(bytes, 2)} GB`;
+    if (bytes < 1000) return `${roundSmart(bytes, 2)} GB`;
     bytes /= 1024;
-    if (bytes < (1000)) return `${roundSmart(bytes, 2)} TB`;
-    return "-";
+    if (bytes < 1000) return `${roundSmart(bytes, 2)} TB`;
+    return '-';
 }
 
 /**
@@ -262,7 +266,7 @@ function isValidUrl(string) {
     } catch (error) {
         return false;
     }
-    return url.protocol === "http:" || url.protocol === "https:";
+    return url.protocol === 'http:' || url.protocol === 'https:';
 }
 
 /**
@@ -271,7 +275,11 @@ function isValidUrl(string) {
  * @returns {Boolean}
  */
 function isValidHostname(string) {
-    return string.match(/^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$/) && !string.match(/^localhost$/);
+    return (
+        string.match(
+            /^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$/
+        ) && !string.match(/^localhost$/)
+    );
 }
 
 /**
@@ -280,7 +288,13 @@ function isValidHostname(string) {
  * @returns {Boolean}
  */
 function isValidIp(string) {
-    return string.match(/((^\s*((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))\s*$)|(^\s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?\s*$))/) && !string.match(/(^127\.)|(^10\.)|(^172\.1[6-9]\.)|(^172\.2[0-9]\.)|(^172\.3[0-1]\.)|(^192\.168\.)/) && !string.match(/^::1$/);
+    return (
+        string.match(
+            /((^\s*((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))\s*$)|(^\s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?\s*$))/
+        ) &&
+        !string.match(/(^127\.)|(^10\.)|(^172\.1[6-9]\.)|(^172\.2[0-9]\.)|(^172\.3[0-1]\.)|(^192\.168\.)/) &&
+        !string.match(/^::1$/)
+    );
 }
 
 /**
@@ -288,7 +302,7 @@ function isValidIp(string) {
  * @param {string} text The input string
  * @returns {string} The escaped string
  */
- function escapeHTML(text) {
+function escapeHTML(text) {
     return text
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
@@ -299,25 +313,25 @@ function isValidIp(string) {
 
 try {
     module.exports = {
-        randomHex: randomHex,
-        randomInt: randomInt,
-        randomFloat: randomFloat,
-        getRandomElement: getRandomElement,
-        getRandomWeighted: getRandomWeighted,
-        clamp: clamp,
-        overflow: overflow,
-        roundSmart: roundSmart,
-        getWords: getWords,
-        countWords: countWords,
-        sleep: sleep,
-        shuffle: shuffle,
-        formatSeconds: formatSeconds,
-        getAgeFromDate: getAgeFromDate,
-        getRelativeDate: getRelativeDate,
-        formatSize: formatSize,
-        isValidUrl: isValidUrl,
-        isValidHostname: isValidHostname,
-        isValidIp: isValidIp,
-        escapeHTML: escapeHTML
+        randomHex,
+        randomInt,
+        randomFloat,
+        getRandomElement,
+        getRandomWeighted,
+        clamp,
+        overflow,
+        roundSmart,
+        getWords,
+        countWords,
+        sleep,
+        shuffle,
+        formatSeconds,
+        getAgeFromDate,
+        getRelativeDate,
+        formatSize,
+        isValidUrl,
+        isValidHostname,
+        isValidIp,
+        escapeHTML
     };
 } catch (error) {}
