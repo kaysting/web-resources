@@ -52,7 +52,7 @@ $palletteNames: ('base', 'accent', 'success', 'danger');
     --c-success-hue: 150;
     --c-success-sat: 60%;
 
-    --c-syntax-lum: 70%;
+    --c-syntax-lit: 70%;
 
     /* Color palettes */
     @each $name in $palletteNames {
@@ -101,15 +101,15 @@ $palletteNames: ('base', 'accent', 'success', 'danger');
     --c-selection-secondary: var(--c-base-20);
 
     /* Syntax Highlighting */
-    --c-syntax-comment: hsl(0, 0%, var(--c-syntax-lum));
-    --c-syntax-namespace: hsl(0, 0%, var(--c-syntax-lum));
-    --c-syntax-storage-modifier-import: hsl(0, 0%, var(--c-syntax-lum));
-    --c-syntax-constant: hsl(208, 80%, var(--c-syntax-lum));
-    --c-syntax-entity: hsl(270, 80%, var(--c-syntax-lum));
-    --c-syntax-entity-tag: hsl(125, 80%, var(--c-syntax-lum));
-    --c-syntax-keyword: hsl(5, 80%, var(--c-syntax-lum));
-    --c-syntax-string: hsl(200, 80%, var(--c-syntax-lum));
-    --c-syntax-variable: hsl(30, 80%, var(--c-syntax-lum));
+    --c-syntax-comment: hsl(0, 0%, var(--c-syntax-lit));
+    --c-syntax-namespace: hsl(0, 0%, var(--c-syntax-lit));
+    --c-syntax-storage-modifier-import: hsl(0, 0%, var(--c-syntax-lit));
+    --c-syntax-constant: hsl(208, 80%, var(--c-syntax-lit));
+    --c-syntax-entity: hsl(270, 80%, var(--c-syntax-lit));
+    --c-syntax-entity-tag: hsl(125, 80%, var(--c-syntax-lit));
+    --c-syntax-keyword: hsl(5, 80%, var(--c-syntax-lit));
+    --c-syntax-string: hsl(200, 80%, var(--c-syntax-lit));
+    --c-syntax-variable: hsl(30, 80%, var(--c-syntax-lit));
 
     /* Transition functions */
     --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
@@ -127,7 +127,7 @@ $palletteNames: ('base', 'accent', 'success', 'danger');
 }
 
 :root[data-theme='light'] {
-    --c-syntax-lum: 40%;
+    --c-syntax-lit: 40%;
 
     /* Text colors */
     --c-text-default: var(--c-base-15);
