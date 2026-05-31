@@ -240,3 +240,18 @@ $text-aligns: (center, right, left);
     mask-position: center;
     content: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
 }
+
+// Colors
+$textColors: ('default', 'bright', 'secondary', 'muted', 'danger', 'success', 'accent');
+@each $color in $textColors {
+    .color-#{$color} {
+        color: #{'var(--c-text-#{$color})'};
+    }
+}
+
+$backgroundColors: ('default', 'negative', 'subsurface', 'surface', 'accent');
+@each $color in $backgroundColors {
+    .background-#{$color} {
+        background: #{'var(--c-bg-#{$color})'};
+    }
+}
