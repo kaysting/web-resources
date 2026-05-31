@@ -54,6 +54,16 @@ $palletteNames: ('base', 'accent', 'success', 'danger');
 
     --c-syntax-lit: 70%;
 
+    /* Fonts */
+    --font-default: 'Poppins';
+    --font-headers: 'Poppins';
+    --font-buttons: 'Poppins';
+    --font-code: 'Fira Code';
+
+    /* Appearance settings */
+    --roundness-multiplier: 1;
+    --border-thickness: 1px;
+
     /* Color palettes */
     @each $name in $palletteNames {
         @each $l in $lightnesses {
@@ -115,16 +125,6 @@ $palletteNames: ('base', 'accent', 'success', 'danger');
     /* Transition functions */
     --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
     --ease-in-out-quad: cubic-bezier(0.45, 0, 0.55, 1);
-
-    /* Fonts */
-    --font-default: 'Poppins';
-    --font-headers: 'Poppins';
-    --font-buttons: 'Poppins';
-    --font-code: 'Fira Code';
-
-    /* Appearance settings */
-    --roundness-multiplier: 1;
-    --border-thickness: 1px;
 }
 
 :root[data-theme='light'] {
