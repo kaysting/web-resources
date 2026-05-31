@@ -577,6 +577,14 @@ input[type='week']::-webkit-calendar-picker-indicator {
     font-variation-settings: 'FILL' 0;
 }
 
+.color-default {
+    color: var(--c-text-default);
+}
+
+.color-bright {
+    color: var(--c-text-bright);
+}
+
 .color-secondary {
     color: var(--c-text-secondary);
 }
