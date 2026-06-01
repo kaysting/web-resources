@@ -4,8 +4,8 @@
   "description": "A collection of custom base CSS and Javascript for use in web and server projects.",
   "main": "utils.js",
   "scripts": {
-    "start": "node v4/docs/build && node test",
-    "build-v4": "node v4/docs/build"
+    "start": "node v4/build && node test",
+    "build-v4": "node v4/build"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,9 @@
   "devDependencies": {
     "ejs": "^6.0.1",
     "express": "^5.2.1",
-    "marked": "^18.0.4"
+    "html-minifier-terser": "^7.2.0",
+    "marked": "^18.0.4",
+    "sass": "^1.100.0",
+    "terser": "^5.48.0"
   }
 }

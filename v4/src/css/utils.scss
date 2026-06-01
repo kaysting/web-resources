@@ -1,6 +1,4 @@
-/* ==========================================================================
-   1. DESIGN TOKENS (Variables & Maps)
-   ========================================================================== */
+@use 'sass:string';
 
 $spacing-steps: (1, 2, 4, 8, 12, 16, 24, 32, 48, 64);
 $text-sizes: (10, 12, 13, 14, 15, 16, 18, 20, 24, 28, 32, 36, 42, 48, 54, 64, 72, 96);
@@ -107,7 +105,7 @@ $align-space: (space-between, space-evenly, space-around);
 // Spaced Alignments (content/justify only)
 @each $val in $align-space {
     // Strip the "space-" prefix for the shorthand class name
-    $short: str-slice($val, 7);
+    $short: string.slice($val, 7);
 
     .align-content-#{$val},
     .align-#{$short} {
