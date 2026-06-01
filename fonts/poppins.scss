@@ -15,6 +15,7 @@ $weights: (
         font-family: 'Poppins';
         font-style: normal;
         font-weight: #{$weight};
+        font-display: swap;
         src: url('/fonts/poppins/Poppins-#{$name}.ttf') format('truetype');
     }
 }
