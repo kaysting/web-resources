@@ -12,6 +12,17 @@
         <input type="checkbox" id="toggleTheme" class="toggle">
         Light theme
     </label>
+    <script>
+        (() => {
+            const checkbox = document.querySelector('#toggleTheme');
+            checkbox.addEventListener('change', e => {
+                const newTheme = e.target.checked ? 'light' : 'dark';
+                document.documentElement.dataset.theme = newTheme;
+                window.localStorage.setItem('theme', newTheme)
+            })
+            checkbox.checked = window.localStorage.getItem('theme') == 'light'
+        })()
+    </script>
 
     <h2>Buttons</h2>
 

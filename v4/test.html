@@ -41,6 +41,17 @@
         <input type="checkbox" id="toggleTheme" class="toggle">
         Light theme
     </label>
+    <script>
+        (() => {
+            const checkbox = document.querySelector('#toggleTheme');
+            checkbox.addEventListener('change', e => {
+                const newTheme = e.target.checked ? 'light' : 'dark';
+                document.documentElement.dataset.theme = newTheme;
+                window.localStorage.setItem('theme', newTheme)
+            })
+            checkbox.checked = window.localStorage.getItem('theme') == 'light'
+        })()
+    </script>
 
     <h2>Buttons</h2>
 
@@ -584,7 +595,7 @@
 
                 <input
                     type="text"
-                    id="textbox-5663"
+                    id="textbox-24005"
                     name=""
                     placeholder="Type something..."
                     value=""
@@ -625,7 +636,7 @@
 
                 <input
                     type="text"
-                    id="textbox-42282"
+                    id="textbox-45276"
                     name=""
                     placeholder="Type something..."
                     value=""
@@ -666,7 +677,7 @@
 
                 <input
                     type="text"
-                    id="textbox-10638"
+                    id="textbox-49224"
                     name=""
                     placeholder="Type something..."
                     value=""
@@ -707,7 +718,7 @@
 
                 <input
                     type="text"
-                    id="textbox-65968"
+                    id="textbox-97410"
                     name=""
                     placeholder="Type something..."
                     value=""
@@ -741,14 +752,14 @@
     
 
             
-                <label for="textbox-26698">Search</label>
+                <label for="textbox-11201">Search</label>
             
 
             
 
                 <input
                     type="text"
-                    id="textbox-26698"
+                    id="textbox-11201"
                     name=""
                     placeholder="Type something..."
                     value=""
@@ -784,14 +795,14 @@
     
 
             
-                <label for="textbox-90355">Search</label>
+                <label for="textbox-96578">Search</label>
             
 
             
 
                 <input
                     type="text"
-                    id="textbox-90355"
+                    id="textbox-96578"
                     name=""
                     placeholder="Type something..."
                     value=""
@@ -858,7 +869,7 @@
 
                 <textarea
                     name=""
-                    id="textbox-5431"
+                    id="textbox-89669"
                     placeholder="Write an essay..."
                     rows="3"
                     data-expandable="true"
@@ -896,14 +907,14 @@
     
 
             
-                <label for="textbox-95944">Write a story</label>
+                <label for="textbox-61903">Write a story</label>
             
 
             
 
                 <textarea
                     name=""
-                    id="textbox-95944"
+                    id="textbox-61903"
                     placeholder="Once upon a time..."
                     rows="3"
                     data-expandable="true"
@@ -944,14 +955,14 @@
     
 
             
-                <label for="textbox-60186">Name</label>
+                <label for="textbox-29825">Name</label>
             
 
             
 
                 <input
                     type="text"
-                    id="textbox-60186"
+                    id="textbox-29825"
                     name=""
                     placeholder="Kayla"
                     value=""
@@ -991,14 +1002,14 @@
     
 
             
-                <label for="textbox-45970">User ID</label>
+                <label for="textbox-19319">User ID</label>
             
 
             
 
                 <input
                     type="number"
-                    id="textbox-45970"
+                    id="textbox-19319"
                     name=""
                     placeholder="12345"
                     value="12345"
@@ -1017,12 +1028,12 @@
     
 
     
-        <button id="textbox-45970-btnCopyText" class="btn small text circle" title="Copy text">
+        <button id="textbox-19319-btnCopyText" class="btn small text circle" title="Copy text">
             <span class="symbol">content_copy</span>
         </button>
         <script>
-            document.querySelector('#textbox-45970-btnCopyText').addEventListener('click', () => {
-                copyText(document.querySelector('#textbox-45970').value);
+            document.querySelector('#textbox-19319-btnCopyText').addEventListener('click', () => {
+                copyText(document.querySelector('#textbox-19319').value);
             })
         </script>
     
@@ -1047,14 +1058,14 @@
     
 
             
-                <label for="textbox-24360">Password</label>
+                <label for="textbox-84772">Password</label>
             
 
             
 
                 <input
                     type="password"
-                    id="textbox-24360"
+                    id="textbox-84772"
                     name=""
                     placeholder="super-secure-password"
                     value="password"
@@ -1071,13 +1082,13 @@
     
 
     
-        <button id="textbox-24360-btnTogglePassVisibility" class="btn small tertiary circle" title="Show password">
+        <button id="textbox-84772-btnTogglePassVisibility" class="btn small tertiary circle" title="Show password">
             <span class="symbol filled">visibility</span>
         </button>
         <script>
-            document.querySelector('#textbox-24360-btnTogglePassVisibility').addEventListener('click', () => {
-                const input = document.querySelector(`#textbox-24360`);
-                const btn = document.querySelector(`#textbox-24360-btnTogglePassVisibility`);
+            document.querySelector('#textbox-84772-btnTogglePassVisibility').addEventListener('click', () => {
+                const input = document.querySelector(`#textbox-84772`);
+                const btn = document.querySelector(`#textbox-84772-btnTogglePassVisibility`);
                 const symbol = btn.querySelector('.symbol');
                 if (input.type == 'password') {
                     input.type = 'text';
@@ -1114,14 +1125,14 @@
     
 
             
-                <label for="textbox-82195">Select a fruit</label>
+                <label for="textbox-2775">Select a fruit</label>
             
 
             
 
                 <select
                     name=""
-                    id="textbox-82195"
+                    id="textbox-2775"
                     
                 >
                     
