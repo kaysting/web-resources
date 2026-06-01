@@ -255,3 +255,9 @@ $backgroundColors: ('default', 'negative', 'subsurface', 'surface', 'accent');
         background: #{'var(--c-bg-#{$color})'};
     }
 }
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 32px 16px;
+}
