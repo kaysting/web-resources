@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title><%= locals.title ? `${locals.title} - ` : '' %>Framework v4</title>
+
+        <link rel="stylesheet" href="/v4/css/base.css" />
+        <link rel="stylesheet" href="/v4/css/utils.css" />
+
+        <link rel="stylesheet" href="/fonts/poppins.css" />
+        <link rel="stylesheet" href="/fonts/fira-code.css" />
+        <link rel="stylesheet" href="/fonts/material-symbols.css" />
+
+        <script src="/lib/prism.min.js" defer></script>
+        <script src="/lib/prism-autoloader.min.js" defer></script>
+
+        <script src="/v4/js/base.js" defer></script>
+
+        <script>
+            (() => {
+                // Set theme by checking the 'theme' local storage item or user device preference
+                const theme = localStorage.getItem('theme') ||
+                (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                document.documentElement.setAttribute('data-theme', theme);
+            })();
+        </script>
+    </head>
+    <body>
+        <%- include(`pages/${page}`) %>
+    </body>
+</html>

@@ -1,0 +1,323 @@
+<div class="container">
+    <h1 class="color-accent">UI Testing</h1>
+    <p>This page tests various UI elements.</p>
+    <p><b>Here's some bold text</b></p>
+    <p class="color-secondary font-monospace text-size-15">
+        This is another paragraph but a little dimmer and smaller and monospace :3
+    </p>
+    <p>Oh and this is a paragraph that has <a href="https://google.com">a link to Google</a>!</p>
+
+    <h2>Theme</h2>
+    <label for="toggleTheme" class="control">
+        <input type="checkbox" id="toggleTheme" class="toggle">
+        Light theme
+    </label>
+
+    <h2>Buttons</h2>
+
+    <%
+        const buttonSizes = ['small', 'default', 'medium', 'large']
+        const buttonTypes = [
+            { class: '', icon: 'add', label: 'Create' },
+            { class: 'alt', icon: 'add', label: 'Add' },
+            { class: 'secondary', icon: 'pause', label: 'Pause' },
+            { class: 'success', icon: 'check', label: 'Confirm' },
+            { class: 'danger', icon: 'delete', label: 'Delete' },
+            { class: 'tertiary', icon: 'close', label: 'Close' },
+            { class: 'text', icon: 'help', label: 'Need help?' },
+            { class: 'text success', icon: 'favorite', label: 'Favorite' },
+            { class: 'text danger', icon: 'flag', label: 'Report' },
+            { class: 'text secondary', icon: 'close', label: 'Clear' },
+            { class: 'outline', icon: 'help', label: 'Need help?' },
+            { class: 'outline success', icon: 'check', label: 'Accept' },
+            { class: 'outline danger', icon: 'error', label: 'Errors' },
+            { class: 'outline secondary', icon: 'refresh', label: 'Refresh' },
+            { class: 'outline tertiary', icon: 'close', label: 'Exit' },
+        ]
+    %>
+    <div class="table-container">
+        <table>
+            <thead>
+                <th></th>
+                <% for( const size of buttonSizes ) { %>
+                    <th class="text-center"><%= size %></th>
+                <% } %>
+            </thead>
+            <tbody>
+                <% for( const type of buttonTypes ) { %>
+                    <tr>
+                        <th scope="row"><%= type.class %></th>
+                        <% for( const size of buttonSizes ) { %>
+                            <td class="text-center">
+                                <button class="btn <%= type.class %> <%= size %>">
+                                    <div class="symbol filled"><%= type.icon %></div>
+                                    <div class="label"><%= type.label %></div>
+                                </button>
+                            </td>
+                        <% } %>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+    <h2>Inputs</h2>
+    <div class="flex col gap-8">
+        <%- include('../partials/components/textbox', {
+            symbol: 'search', placeholder: 'Type something...', size: 'small', width: 300
+        }) %>
+        <%- include('../partials/components/textbox', {
+            symbol: 'search', placeholder: 'Type something...', size: '', width: 300
+        }) %>
+        <%- include('../partials/components/textbox', {
+            symbol: 'search', placeholder: 'Type something...', size: 'medium', width: 300
+        }) %>
+        <%- include('../partials/components/textbox', {
+            symbol: 'search', placeholder: 'Type something...', size: 'large', width: 300
+        }) %>
+        <%- include('../partials/components/textbox', {
+            label: 'Search', placeholder: 'Type something...', size: '', width: 300, vertical: false
+        }) %>
+        <%- include('../partials/components/textbox', {
+            label: 'Search', placeholder: 'Type something...', size: '', width: 300
+        }) %>
+        <div class="flex gap-8">
+            <div class="textbox" style="width: 100px">
+                <label>H</label>
+                <input type="number" placeholder="0">
+            </div>
+            <div class="textbox danger" style="width: 100px">
+                <label>S</label>
+                <input type="number" placeholder="0">
+            </div>
+            <div class="textbox success" style="width: 100px">
+                <label>L</label>
+                <input type="number" placeholder="0">
+            </div>
+            <div class="textbox disabled" style="width: 100px">
+                <label>O</label>
+                <input type="number" placeholder="0" disabled>
+            </div>
+            <button class="btn">Save</button>
+        </div>
+        <div class="textbox medium" style="width: 200px">
+            <label for="">HEX</label>
+            <input type="text" name="" id="" placeholder="#rrggbb">
+            <button class="btn text small circle">
+                <span class="symbol">content_copy</span>
+            </button>
+        </div>
+        <%- include('../partials/components/textbox', {
+            placeholder: 'Write an essay...',
+            multiline: true, width: 600
+        }) %>
+        <%- include('../partials/components/textbox', {
+            symbol: 'text_fields', label: 'Write a story',
+            placeholder: 'Once upon a time...',
+            multiline: true, width: 600
+        }) %>
+        <div class="grid-dynamic justify-center">
+            <%- include('../partials/components/textbox', {
+                symbol: 'person', label: 'Name', placeholder: 'Kayla'
+            }) %>
+            <%- include('../partials/components/textbox', {
+                symbol: 'tag', label: 'User ID', placeholder: '12345', value: 12345, type: 'number', copyTextButton: true
+            }) %>
+            <%- include('../partials/components/textbox', {
+                symbol: 'key', label: 'Password', placeholder: 'super-secure-password', value: 'password', type: 'password'
+            }) %>
+            <%- include('../partials/components/textbox', {
+                symbol: 'nutrition', label: 'Select a fruit', type: 'select',
+                options: [
+                    { label: 'Pick an option...', disabled: true, selected: true },
+                    { label: 'Apple' },
+                    { label: 'Banana' },
+                    { label: 'Orange' },
+                    { label: 'Grape' },
+                    { label: 'Lemon' },
+                    { label: 'Lime' },
+                    { label: 'Pear' },
+                    { label: 'Raspberry' },
+                    { label: 'Blueberry' }
+                ]
+            }) %>
+        </div>
+
+        <label class="control">
+            <input type="checkbox" name="" id="">
+            I agree
+        </label>
+        <div class="flex row gap-8 flex-wrap">
+            <label class="control">
+                <input type="checkbox">
+                Apple
+            </label>
+            <label class="control">
+                <input type="checkbox"checked>
+                Banana
+            </label>
+            <label class="control">
+                <input type="checkbox"checked>
+                Orange
+            </label>
+        </div>
+        <div class="flex row gap-8 flex-wrap">
+            <label class="control contained">
+                <input type="radio" name="radios">
+                A
+            </label>
+            <label class="control contained">
+                <input type="radio" name="radios">
+                B
+            </label>
+            <label class="control contained">
+                <input type="radio" name="radios" checked>
+                C
+            </label>
+            <label class="control contained">
+                <input type="radio" name="radios">
+                D
+            </label>
+        </div>
+        <label class="control contained" style="max-width: 500px">
+            <input type="checkbox" name="" id="" checked>
+            This is a paragraph to demonstrate how the checkbox centers itself vertically and that all of this text is clickable because it's inside the label.
+        </label>
+        <label class="control">
+            <input type="checkbox" class="toggle">
+            Toggle switch
+        </label>
+    </div>
+    <h2>Dropdowns</h2>
+    <div class="flex row gap-8 flex-wrap">
+        <button id="showDropdown" class="btn medium">
+            <span class="label">Click for a dropdown</span>
+            <span class="symbol">expand_more</span>
+        </button>
+        <button id="showDropdown2" class="btn medium">
+            <span class="label">Click for a long dropdown</span>
+            <span class="symbol">expand_more</span>
+        </button>
+        <button id="showDropdown3" class="btn large circle">
+            <span class="symbol">mouse</span>
+        </button>
+    </div>
+    <h2>Modals</h2>
+    <div class="flex row gap-8 flex-wrap">
+        <button id="showModal" class="btn medium">
+            <span class="label">Click for a modal</span>
+            <span class="symbol">open_in_new</span>
+        </button>
+        <button id="showModal2" class="btn medium">
+            <span class="label">Click for a confirmation</span>
+            <span class="symbol">open_in_new</span>
+        </button>
+        <button id="showModal3" class="btn medium">
+            <span class="label">Click for scrollable modal</span>
+            <span class="symbol">open_in_new</span>
+        </button>
+    </div>
+    <script>
+        document.querySelector('#showDropdown').addEventListener('click', async() => {
+            const clicked = await showDropdown(document.querySelector('#showDropdown'), [
+                { symbol: 'settings', label: 'Item 1' },
+                { symbol: 'settings', label: 'Item 2', selected: true },
+                { separator: true },
+                { label: 'This option has a really long label to demonstrate overflow and other fun things', value: 'overflowTest' },
+            ])
+            console.log(clicked)
+        })
+
+        let dropdown2selection = 0;
+        document.querySelector('#showDropdown2').addEventListener('click', async() => {
+            const items = [];
+            for (let i = 0; i < 100; i++) {
+                items.push({ label: `Item ${i}`, value: i, selected: i == dropdown2selection })
+            }
+            const clicked = await showDropdown(document.querySelector('#showDropdown2'), items, {selectable: true}) ?? dropdown2selection
+            dropdown2selection = clicked;
+            console.log(clicked)
+        })
+
+        document.querySelector('#showDropdown3').addEventListener('click', async() => {
+            const clicked = await showDropdown(null, [
+                { symbol: 'settings', label: 'Item 1' },
+                { symbol: 'settings', label: 'Item 2' },
+                { separator: true },
+                { label: 'Meow meow no icon' },
+            ])
+            console.log(clicked)
+        })
+
+        document.querySelector('#showModal').addEventListener('click', async() => {
+            const modal = showModal('Test modal', `Hi here's a test modal, this is proof it works!`, [
+                {
+                    label: 'Cancel',
+                    class: 'text'
+                }, {
+                    label: 'Okay',
+                    onClick: () => console.log(`Okay clicked`)
+                }
+            ])
+        })
+
+        document.querySelector('#showModal2').addEventListener('click', async() => {
+            const result = await showConfirmationDialog('Are you a cutie patootie?');
+            console.log(`Result was`, result)
+        })
+
+        document.querySelector('#showModal3').addEventListener('click', async() => {
+            showModal('Scrollable modal', `
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+                <p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.</p>
+                <p>Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,</p>
+            `, [{label: 'Close'}], {
+                height: 400, fullscreenable: true
+            })
+        })
+    </script>
+    <h2>Cards</h2>
+    <div class="flex col gap-8">
+        <div class="card">
+            <p>meow meow meow</p>
+        </div>
+        <div class="card surface">
+            <h4>This card has a background :3</h4>
+        </div>
+        <div class="card hoverable">
+            <p>And this card only shows its background when hovered over. Useful for when you want a card to be clickable!</p>
+        </div>
+        <div class="card sectional">
+            <div class="section">
+                <p>meow meow</p>
+            </div>
+            <div class="section">
+                <p>Another section</p>
+            </div>
+            <div class="section flex gap-8">
+                <button class="btn small">
+                    <div class="symbol filled">send</div>
+                    <div class="label">Start</div>
+                </button>
+                <button class="btn small text danger">
+                    <div class="symbol">close</div>
+                    <div class="label">Cancel</div>
+                </button>
+            </div>
+        </div>
+        <div class="card sectional">
+            <div class="section surface">
+                <p><b>Silly title</b></p>
+            </div>
+            <div class="section">
+                <p>This sectioned card has a filled first section!</p>
+            </div>
+        </div>
+        <div class="card spacious">
+            <h3>This card is spacious</h3>
+            <p>So it's suitable for longform content like documentation or a blog post!</p>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+            <p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.</p>
+            <p>Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,</p>
+        </div>
+    </div>
+</div>

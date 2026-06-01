@@ -1,6 +1,10 @@
-# kaysting.dev UI Framework
+# UI Framework v4
 
-A modern, versatile CSS and JS UI framework for building clean, responsive UIs with minimal bloat. Coming in at under 100 KB, this framework is ideal for mission-critical apps where load times are of the utmost importance.
+A modern, versatile CSS and JS UI framework for building clean, responsive UIs with minimal bloat. The core CSS and JS comes in at under 100 KB, making it ideal for mission-critical apps or those where SEO and core web vitals are top priorities.
+
+This documentation is in development, so many sections are yet to be written.
+
+Check out the [UI test page](/v4/test.html) to see the framework's various components in action.
 
 ## Browser support
 
@@ -59,11 +63,11 @@ Configure these settings by overriding only the necessary properties in a `<styl
 ```css
 :root {
     /* Color category properties */
-    --c-base-hue: 340;
+    --c-base-hue: 220;
     --c-base-sat: 10%;
-    --c-accent-hue: 340;
-    --c-accent-sat: 60%;
-    --c-danger-hue: 5;
+    --c-accent-hue: 220;
+    --c-accent-sat: 80%;
+    --c-danger-hue: 0;
     --c-danger-sat: 90%;
     --c-success-hue: 150;
     --c-success-sat: 60%;
@@ -89,20 +93,21 @@ The framework defaults to dark mode, but the mode can be overridden by setting `
 
 To change themes automatically or based on user settings, add a small script to your head to ensure the switch is made before the first draw.
 
-```js
+```html
 <script>
-  (() => {
-    // Set theme by checking the 'theme' local storage item or user device preference
-    const theme = localStorage.getItem('theme') ||
-      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    document.documentElement.setAttribute('data-theme', theme);
-  })();
+    (() => {
+        // Set theme by checking the 'theme' local storage item or user device preference
+        const theme =
+            localStorage.getItem('theme') ||
+            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+    })();
 </script>
 ```
 
 ## Symbols
 
-The `symbol` class can be applied to an element (usually `<span>`) to convert it into a [Material Symbol](https://fonts.google.com/icons?query=poppins&icon.style=Rounded&icon.size=128&icon.color=%23ffe9ca&preview.script=Latn). These elements should have their text content set to either the text ID or code point of a Material Symbol and will render the symbol in its place.
+Provided `material-symbols.css` is loaded, the `symbol` class can be applied to an element (usually `<span>`) to convert it into a [Material Symbol](https://fonts.google.com/icons?query=poppins&icon.style=Rounded&icon.size=128&icon.color=%23ffe9ca&preview.script=Latn). These elements should have their text content set to either the text ID or code point of a Material Symbol and will render the symbol in its place.
 
 This framework auto-loads Material Symbols CSS at weight 400 with the rounded style. Symbols default to filled, but can be made outlined by adding the `outlined` class.
 
@@ -142,8 +147,14 @@ This framework has styling for the syntax-highlighting classes applied by Prism.
 Add Prism.js and its autoloader to your HTML `<head>`:
 
 ```html
-<script src="https://src.kaysting.dev/lib/prism.min.js"></script>
-<script src="https://src.kaysting.dev/lib/prism-autoloader.min.js"></script>
+<script src="https://src.kaysting.dev/lib/prism.min.js" defer></script>
+<script src="https://src.kaysting.dev/lib/prism-autoloader.min.js" defer></script>
+```
+
+And to highlight code blocks added to the DOM after load:
+
+```js
+Prism.highlightAll();
 ```
 
 ## Popovers

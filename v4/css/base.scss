@@ -43,7 +43,7 @@ $palletteNames: ('base', 'accent', 'success', 'danger');
     --c-accent-hue: 340;
     --c-accent-sat: 60%;
 
-    --c-danger-hue: 5;
+    --c-danger-hue: 0;
     --c-danger-sat: 90%;
 
     --c-success-hue: 150;
@@ -73,9 +73,9 @@ $palletteNames: ('base', 'accent', 'success', 'danger');
     --c-text-bright: var(--c-base-100);
     --c-text-secondary: var(--c-base-75);
     --c-text-muted: var(--c-base-60);
-    --c-text-accent: var(--c-accent-80);
-    --c-text-danger: var(--c-danger-80);
-    --c-text-success: var(--c-success-80);
+    --c-text-accent: var(--c-accent-75);
+    --c-text-danger: var(--c-danger-75);
+    --c-text-success: var(--c-success-75);
     --c-text-default-inverted: var(--c-base-10);
     --c-text-bright-inverted: var(--c-base-0);
 
@@ -91,12 +91,12 @@ $palletteNames: ('base', 'accent', 'success', 'danger');
     --c-border-subtle: var(--c-base-20);
 
     /* Action colors (links, buttons) */
-    --c-action-primary: var(--c-accent-80);
-    --c-action-primary-hover: var(--c-accent-70);
+    --c-action-primary: var(--c-accent-75);
+    --c-action-primary-hover: var(--c-accent-65);
     --c-action-primary-alt: var(--c-accent-30);
     --c-action-primary-alt-hover: var(--c-accent-40);
-    --c-action-secondary: var(--c-base-80);
-    --c-action-secondary-hover: var(--c-base-65);
+    --c-action-secondary: var(--c-base-85);
+    --c-action-secondary-hover: var(--c-base-70);
     --c-action-tertiary: var(--c-base-25);
     --c-action-tertiary-hover: var(--c-base-40);
     --c-action-danger: var(--c-danger-70);
@@ -112,12 +112,12 @@ $palletteNames: ('base', 'accent', 'success', 'danger');
     --c-syntax-comment: hsl(0, 0%, var(--c-syntax-lit));
     --c-syntax-namespace: hsl(0, 0%, var(--c-syntax-lit));
     --c-syntax-storage-modifier-import: hsl(0, 0%, var(--c-syntax-lit));
-    --c-syntax-constant: hsl(208, 80%, var(--c-syntax-lit));
-    --c-syntax-entity: hsl(270, 80%, var(--c-syntax-lit));
-    --c-syntax-entity-tag: hsl(125, 80%, var(--c-syntax-lit));
-    --c-syntax-keyword: hsl(5, 80%, var(--c-syntax-lit));
-    --c-syntax-string: hsl(200, 80%, var(--c-syntax-lit));
-    --c-syntax-variable: hsl(30, 80%, var(--c-syntax-lit));
+    --c-syntax-constant: hsl(208, 70%, var(--c-syntax-lit));
+    --c-syntax-entity: hsl(270, 70%, var(--c-syntax-lit));
+    --c-syntax-entity-tag: hsl(125, 70%, var(--c-syntax-lit));
+    --c-syntax-keyword: hsl(5, 70%, var(--c-syntax-lit));
+    --c-syntax-string: hsl(190, 70%, var(--c-syntax-lit));
+    --c-syntax-variable: hsl(30, 70%, var(--c-syntax-lit));
 
     /* Transition functions */
     --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
@@ -125,7 +125,7 @@ $palletteNames: ('base', 'accent', 'success', 'danger');
 }
 
 :root[data-theme='light'] {
-    --c-syntax-lit: 40%;
+    --c-syntax-lit: 35%;
 
     /* Text colors */
     --c-text-default: var(--c-base-15);
@@ -268,13 +268,11 @@ ol:not(:last-child):not(li > ol) {
 
 a {
     color: var(--c-action-primary);
-    text-decoration: none;
-    font-weight: 600;
+    text-decoration: underline;
 }
 
 a:hover {
-    color: var(--c-action-primary-hover);
-    text-decoration: underline;
+    color: var(--c-text-bright);
     cursor: pointer;
 }
 
@@ -405,7 +403,6 @@ code .token.cdata {
 .cm-tag,
 code .token.class-name,
 code .token.selector,
-code .token.property,
 code .token.tag {
     color: var(--c-syntax-entity-tag) !important;
 }
@@ -433,6 +430,7 @@ code .token.constant {
 .cm-type,
 code .token.color,
 code .token.parameter,
+code .token.property,
 code .token.variable {
     color: var(--c-syntax-variable) !important;
 }

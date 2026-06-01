@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Docs - Framework v4</title>
+
+        <link rel="stylesheet" href="/v4/css/base.css" />
+        <link rel="stylesheet" href="/v4/css/utils.css" />
+
+        <link rel="stylesheet" href="/fonts/poppins.css" />
+        <link rel="stylesheet" href="/fonts/fira-code.css" />
+        <link rel="stylesheet" href="/fonts/material-symbols.css" />
+
+        <script src="/lib/prism.min.js" defer></script>
+        <script src="/lib/prism-autoloader.min.js" defer></script>
+
+        <script src="/v4/js/base.js" defer></script>
+
+        <script>
+            (() => {
+                // Set theme by checking the 'theme' local storage item or user device preference
+                const theme = localStorage.getItem('theme') ||
+                (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                document.documentElement.setAttribute('data-theme', theme);
+            })();
+        </script>
+    </head>
+    <body>
+        <div class="container"><h1>UI Framework v4</h1>
+<p>A modern, versatile CSS and JS UI framework for building clean, responsive UIs with minimal bloat. The core CSS and JS comes in at under 100 KB, making it ideal for mission-critical apps or those where SEO and core web vitals are top priorities.</p>
+<p>This documentation is in development, so many sections are yet to be written.</p>
+<p>Check out the <a href="/v4/test.html">UI test page</a> to see the framework&#39;s various components in action.</p>
+<h2>Browser support</h2>
+<p>This framework uses relatively modern technologies, but should be fully functional on any browser version dating back to 2022. The aim is not and will never be to support legacy browsers.</p>
+<h2>Loading the framework</h2>
+<p>Add these lines to your HTML <code>&lt;head&gt;</code>:</p>
+<pre><code class="language-html">&lt;!-- List two preconnects for src.kaysting.dev to properly optimize fonts and css loading --&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://src.kaysting.dev&quot; /&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://src.kaysting.dev&quot; crossorigin /&gt;
+&lt;!-- Load base framework styles --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://src.kaysting.dev/v4/css/base.css&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://src.kaysting.dev/v4/css/utils.css&quot; /&gt;
+&lt;!-- Load fonts --&gt;
+&lt;!-- Replace these fonts with your own and update the framework font variables if desired --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://src.kaysting.dev/fonts/poppins.css&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://src.kaysting.dev/fonts/fira-code.css&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://src.kaysting.dev/fonts/material-symbols.css&quot; /&gt;
+&lt;!-- Load framework js --&gt;
+&lt;script src=&quot;https://src.kaysting.dev/v4/js/base.js&quot; defer&gt;&lt;/script&gt;
+</code></pre>
+<p>Load <code>utils.css</code> AFTER your other styles if you need the utility classes to override your other CSS.</p>
+<h2>What&#39;s styled by default?</h2>
+<p>By default, this framework styles the following elements with no changes needed:</p>
+<ul>
+<li>Fonts and page colors</li>
+<li>Headings</li>
+<li>Paragraphs</li>
+<li><code>&lt;a&gt;</code> links</li>
+<li>Ordered/unordered lists</li>
+<li><code>&lt;small&gt;</code> text</li>
+<li>Tables</li>
+<li>Inline <code>&lt;code&gt;</code> elements</li>
+<li>Code blocks formatted as <code>&lt;pre&gt;&lt;code&gt; ... code ... &lt;/code&gt;&lt;/pre&gt;</code></li>
+<li>Radio buttons and checkboxes</li>
+</ul>
+<h2>Changing basic framework settings</h2>
+<p>This framework leans heavily into the configured base and accent colors, which are each configured with a hue and saturation percentage. Lightness is determined automatically based on the theme (dark or light).</p>
+<ul>
+<li>The <strong>base</strong> color is used for all backgrounds, surfaces, borders, and normal text.</li>
+<li>The <strong>accent</strong> color is used for links, buttons, and selected/active states.</li>
+<li>The <strong>danger</strong> color is used to signify dangerous or negative states or actions.</li>
+<li>The <strong>success</strong> color is used to signify successful or positive states or actions.</li>
+</ul>
+<p>The framework also allows the customization of fonts used in various places as well as the roundness of components and thickness of component borders.</p>
+<p>Configure these settings by overriding only the necessary properties in a <code>&lt;style&gt;</code> block in your HTML <code>&lt;head&gt;</code>:</p>
+<pre><code class="language-css">:root {
+    /* Color category properties */
+    --c-base-hue: 220;
+    --c-base-sat: 10%;
+    --c-accent-hue: 220;
+    --c-accent-sat: 80%;
+    --c-danger-hue: 0;
+    --c-danger-sat: 90%;
+    --c-success-hue: 150;
+    --c-success-sat: 60%;
+    --c-syntax-lit: 70%;
+
+    /* Fonts */
+    --font-default: &#39;Poppins&#39;;
+    --font-headers: &#39;Poppins&#39;;
+    --font-buttons: &#39;Poppins&#39;;
+    --font-code: &#39;Fira Code&#39;;
+
+    /* Appearance settings */
+    --roundness-multiplier: 1;
+    --border-thickness: 1px;
+}
+</code></pre>
+<h3>Light/dark mode</h3>
+<p>Full palettes are created from these values with varying lightness values, meaning the framework can easily be switched between light and dark mode with minimal repetitive CSS.</p>
+<p>The framework defaults to dark mode, but the mode can be overridden by setting <code>data-mode</code> on the <code>&lt;html&gt;</code> element to <code>light</code> or <code>dark</code>.</p>
+<p>To change themes automatically or based on user settings, add a small script to your head to ensure the switch is made before the first draw.</p>
+<pre><code class="language-html">&lt;script&gt;
+    (() =&gt; {
+        // Set theme by checking the &#39;theme&#39; local storage item or user device preference
+        const theme =
+            localStorage.getItem(&#39;theme&#39;) ||
+            (window.matchMedia(&#39;(prefers-color-scheme: dark)&#39;).matches ? &#39;dark&#39; : &#39;light&#39;);
+        document.documentElement.setAttribute(&#39;data-theme&#39;, theme);
+    })();
+&lt;/script&gt;
+</code></pre>
+<h2>Symbols</h2>
+<p>Provided <code>material-symbols.css</code> is loaded, the <code>symbol</code> class can be applied to an element (usually <code>&lt;span&gt;</code>) to convert it into a <a href="https://fonts.google.com/icons?query=poppins&icon.style=Rounded&icon.size=128&icon.color=%23ffe9ca&preview.script=Latn">Material Symbol</a>. These elements should have their text content set to either the text ID or code point of a Material Symbol and will render the symbol in its place.</p>
+<p>This framework auto-loads Material Symbols CSS at weight 400 with the rounded style. Symbols default to filled, but can be made outlined by adding the <code>outlined</code> class.</p>
+<p>Combined with text size and color utility classes, this becomes a powerful, HTML-only icon engine.</p>
+<pre><code class="language-html">&lt;!-- A 32x32 circled checkmark in the accent color --&gt;
+&lt;span class=&quot;symbol text-size-32 color-accent&quot;&gt;check_circle&lt;/span&gt;
+</code></pre>
+<h2>Buttons</h2>
+<h3>Size classes</h3>
+<h3>Style classes</h3>
+<h3>Adding icons</h3>
+<h2>Text boxes</h2>
+<h3>Adding icons</h3>
+<h3>Adding interior labels</h3>
+<h2>Checkboxes and radio buttons</h2>
+<h3>Button-style inputs</h3>
+<h3>Toggle switches</h3>
+<h2>Code blocks</h2>
+<h3>Syntax highlighting</h3>
+<p>This framework has styling for the syntax-highlighting classes applied by Prism.js, which automatically identifies and highlights code blocks.</p>
+<p>Add Prism.js and its autoloader to your HTML <code>&lt;head&gt;</code>:</p>
+<pre><code class="language-html">&lt;script src=&quot;https://src.kaysting.dev/lib/prism.min.js&quot; defer&gt;&lt;/script&gt;
+&lt;script src=&quot;https://src.kaysting.dev/lib/prism-autoloader.min.js&quot; defer&gt;&lt;/script&gt;
+</code></pre>
+<p>And to highlight code blocks added to the DOM after load:</p>
+<pre><code class="language-js">Prism.highlightAll();
+</code></pre>
+<h2>Popovers</h2>
+<h3>Dropdowns</h3>
+<h2>Modals</h2>
+<h2>CSS utility classes</h2>
+<h3>Display</h3>
+<h3>Grid layouts</h3>
+<h3>Text styles</h3>
+<h3>Positioning</h3>
+<h3>Misc</h3>
+<h2>JS utility functions</h2>
+</div>
+
+    </body>
+</html>

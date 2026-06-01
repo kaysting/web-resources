@@ -34,7 +34,7 @@ $poppins-styles: Normal, Italic;
             unicode-range: unquote($unicode-latin);
 
             /* Vertical Alignment Fix */
-            ascent-override: 100%;
+            ascent-override: 110%;
             descent-override: 35%;
             line-gap-override: 0%;
         }
