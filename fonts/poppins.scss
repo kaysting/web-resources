@@ -17,6 +17,11 @@ $poppins-styles: Normal, Italic;
             font-display: swap;
             src: url('/fonts/poppins/Poppins-#{$weight}-#{$style}-latin-ext.woff2') format('woff2');
             unicode-range: unquote($unicode-latin-ext);
+
+            /* Vertical Alignment Fix */
+            ascent-override: 90%;
+            descent-override: 35%;
+            line-gap-override: 0%;
         }
 
         // Latin
@@ -27,6 +32,11 @@ $poppins-styles: Normal, Italic;
             font-display: swap;
             src: url('/fonts/poppins/Poppins-#{$weight}-#{$style}-latin.woff2') format('woff2');
             unicode-range: unquote($unicode-latin);
+
+            /* Vertical Alignment Fix */
+            ascent-override: 90%;
+            descent-override: 35%;
+            line-gap-override: 0%;
         }
     }
 }
