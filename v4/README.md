@@ -2,24 +2,31 @@
 
 A modern, versatile CSS and JS UI framework for building clean, responsive UIs with minimal bloat. Coming in at under 100 KB, this framework is ideal for mission-critical apps where load times are of the utmost importance.
 
+## Browser support
+
+This framework uses relatively modern technologies, but should be fully functional on any browser version dating back to 2022. The aim is not and will never be to support legacy browsers.
+
 ## Loading the framework
 
 Add these lines to your HTML `<head>`:
 
 ```html
-<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<!-- List two preconnects for src.kaysting.dev to properly optimize fonts and css loading -->
+<link rel="preconnect" href="https://src.kaysting.dev" />
 <link rel="preconnect" href="https://src.kaysting.dev" crossorigin />
+<!-- Load base framework styles -->
 <link rel="stylesheet" href="https://src.kaysting.dev/v4/css/base.css" />
 <link rel="stylesheet" href="https://src.kaysting.dev/v4/css/utils.css" />
+<!-- Load fonts -->
+<!-- Replace these fonts with your own and update the framework font variables if desired -->
+<link rel="stylesheet" href="https://src.kaysting.dev/fonts/poppins.css" />
+<link rel="stylesheet" href="https://src.kaysting.dev/fonts/fira-code.css" />
+<link rel="stylesheet" href="https://src.kaysting.dev/fonts/material-symbols.css" />
+<!-- Load framework js -->
 <script src="https://src.kaysting.dev/v4/js/base.js" defer></script>
 ```
 
 Load `utils.css` AFTER your other styles if you need the utility classes to override your other CSS.
-
-## Browser support
-
-This framework uses relatively modern technologies, but should be fully functional on any browser version dating back to 2022. The aim is not and will never be to support legacy browsers.
 
 ## What's styled by default?
 
@@ -36,7 +43,7 @@ By default, this framework styles the following elements with no changes needed:
 - Code blocks formatted as `<pre><code> ... code ... </code></pre>`
 - Radio buttons and checkboxes
 
-## Setting theme colors
+## Changing basic framework settings
 
 This framework leans heavily into the configured base and accent colors, which are each configured with a hue and saturation percentage. Lightness is determined automatically based on the theme (dark or light).
 
@@ -45,29 +52,34 @@ This framework leans heavily into the configured base and accent colors, which a
 - The **danger** color is used to signify dangerous or negative states or actions.
 - The **success** color is used to signify successful or positive states or actions.
 
-Configure the colors by placing this `<style>` block in your HTML `<head>`:
+The framework also allows the customization of fonts used in various places as well as the roundness of components and thickness of component borders.
+
+Configure these settings by overriding only the necessary properties in a `<style>` block in your HTML `<head>`:
 
 ```css
 :root {
-    /* Base color */
+    /* Color category properties */
     --c-base-hue: 340;
     --c-base-sat: 10%;
-
-    /* Accent color */
     --c-accent-hue: 340;
     --c-accent-sat: 60%;
-
-    /* Danger color */
     --c-danger-hue: 5;
     --c-danger-sat: 90%;
-
-    /* Success color */
     --c-success-hue: 150;
     --c-success-sat: 60%;
+    --c-syntax-lit: 70%;
+
+    /* Fonts */
+    --font-default: 'Poppins';
+    --font-headers: 'Poppins';
+    --font-buttons: 'Poppins';
+    --font-code: 'Fira Code';
+
+    /* Appearance settings */
+    --roundness-multiplier: 1;
+    --border-thickness: 1px;
 }
 ```
-
-You might prefer to only override the color properties you care about.
 
 ### Light/dark mode
 
