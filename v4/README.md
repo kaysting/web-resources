@@ -130,9 +130,8 @@ This framework has styling for the syntax-highlighting classes applied by Prism.
 Add Prism.js and its autoloader to your HTML `<head>`:
 
 ```html
-<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/prism.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/plugins/autoloader/prism-autoloader.min.js"></script>
+<script src="https://src.kaysting.dev/lib/prism.min.js"></script>
+<script src="https://src.kaysting.dev/lib/prism-autoloader.min.js"></script>
 ```
 
 ## Popovers
