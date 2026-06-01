@@ -1,9 +1,11 @@
+// npm i ejs marked sass clean-css tenser html-minifier-terser sharp
 const fs = require('fs');
 const path = require('path');
 const ejs = require('ejs');
 const marked = require('marked');
 const sass = require('sass');
 const CleanCSS = require('clean-css');
+const sharp = require('sharp');
 const { minify: minifyJsAsync } = require('terser');
 const { minify: minifyHtmlAsync } = require('html-minifier-terser');
 
@@ -75,6 +77,7 @@ const recurse = async (dirRel = '.') => {
                     level: 1
                 }).minify(fs.readFileSync(inPath, 'utf-8'));
                 outText = output.styles;
+                break;
             }
             case 'js': {
                 const result = await minifyJsAsync(fs.readFileSync(inPath, 'utf-8'), {
