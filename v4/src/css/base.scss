@@ -566,6 +566,7 @@ input[type='week']::-webkit-calendar-picker-indicator {
     background: var(--bg);
     transition: 0.1s ease-in-out;
     color: var(--fg);
+    text-decoration: none;
     display: inline-flex;
     align-items: center;
     justify-content: center;
