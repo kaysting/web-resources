@@ -1,17 +1,17 @@
-
 @font-face {
     font-family: 'Material Icons';
     font-style: normal;
     font-weight: 400;
-    src: url(https://src.simplecyber.org/fonts/MaterialIcons-Regular.ttf) format('truetype');
+    src: url(/fonts/MaterialIcons-Regular.ttf) format('truetype');
 }
+
 @font-face {
     font-family: 'Material Icons Outlined';
     font-style: normal;
     font-weight: 400;
-    src: url(https://src.simplecyber.org/fonts/MaterialIconsOutlined-Regular.otf) format('opentype');
+    src: url(/fonts/MaterialIconsOutlined-Regular.otf) format('opentype');
 }
-  
+
 .material-icons {
     font-family: 'Material Icons';
     font-weight: normal;
@@ -27,6 +27,7 @@
     -webkit-font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased;
 }
+
 .material-icons-outlined {
     font-family: 'Material Icons Outlined';
     font-weight: normal;

@@ -1,7 +1,6 @@
-
 @font-face {
     font-family: 'Satoshi';
     font-style: normal;
     font-weight: 100 900;
-    src: url(https://src.simplecyber.org/fonts/Satoshi-Variable.ttf) format('truetype');
+    src: url(/fonts/satoshi/Satoshi-Variable.ttf) format('truetype');
 }

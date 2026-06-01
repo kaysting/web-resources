@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:wght,FILL@400,0..1&display=swap');
+@import url('/fonts/poppins.css');
+@import url('/fonts/material-symbols.css');
 
 $lightnesses: (
     0,
@@ -559,24 +559,6 @@ input[type='week']::-webkit-calendar-picker-indicator {
 
 ::-webkit-scrollbar-thumb:hover {
     background-color: var(--c-action-tertiary-hover);
-}
-
-.symbol {
-    --size: 20px;
-    font-family: 'Material Symbols Rounded';
-    font-variation-settings: 'FILL' 1;
-    font-weight: 400;
-    font-size: var(--size);
-    line-height: 1;
-    flex-shrink: 0;
-    user-select: none;
-    white-space: nowrap;
-    flex-shrink: 0;
-    font-display: block;
-}
-
-.symbol.outlined {
-    font-variation-settings: 'FILL' 0;
 }
 
 .btn {

@@ -1,7 +1,6 @@
-
 @font-face {
     font-family: 'Quicksand';
     font-style: normal;
     font-weight: 100 900;
-    src: url(https://src.simplecyber.org/fonts/Quicksand-Variable.ttf) format('truetype');
+    src: url(/fonts//quicksand/Quicksand-Variable.ttf) format('truetype');
 }
