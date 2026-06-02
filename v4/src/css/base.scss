@@ -646,8 +646,8 @@ input[type='week']::-webkit-calendar-picker-indicator {
 .btn.outline {
     --bg: transparent;
     --bgHover: var(--c-action-tertiary);
-    --fg: var(--c-action-primary);
-    --fgHover: var(--c-action-primary);
+    --fg: var(--c-text-accent);
+    --fgHover: var(--c-text-accent);
 }
 
 .btn.text.secondary,
