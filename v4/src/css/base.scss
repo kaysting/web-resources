@@ -56,8 +56,9 @@ $palletteNames: ('base', 'accent', 'success', 'danger');
     --font-headers: 'Poppins';
     --font-buttons: 'Poppins';
     --font-code: 'Fira Code';
-    --font-headers-weight: 600;
     --font-default-weight: 400;
+    --font-headers-weight: 600;
+    --font-buttons-weight: 500;
 
     /* Appearance settings */
     --roundness-multiplier: 1;
@@ -564,7 +565,7 @@ input[type='week']::-webkit-calendar-picker-indicator {
     padding: 0px var(--padding);
     font-family: var(--font-buttons), sans-serif;
     font-size: var(--textSize);
-    font-weight: 500;
+    font-weight: var(--font-buttons-weight);
     border-radius: calc(calc(var(--height) / 2) * var(--roundness-multiplier));
     background: var(--bg);
     transition: 0.1s ease-in-out;
