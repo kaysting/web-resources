@@ -56,10 +56,16 @@ $palletteNames: ('base', 'accent', 'success', 'danger');
     --font-headers: 'Poppins';
     --font-buttons: 'Poppins';
     --font-code: 'Fira Code';
+    --font-headers-weight: 600;
+    --font-default-weight: 400;
 
     /* Appearance settings */
     --roundness-multiplier: 1;
     --border-thickness: 1px;
+
+    /* Transition functions */
+    --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+    --ease-in-out-quad: cubic-bezier(0.45, 0, 0.55, 1);
 
     /* Color palettes */
     @each $name in $palletteNames {
@@ -118,10 +124,6 @@ $palletteNames: ('base', 'accent', 'success', 'danger');
     --c-syntax-keyword: hsl(5, 70%, var(--c-syntax-lit));
     --c-syntax-string: hsl(190, 70%, var(--c-syntax-lit));
     --c-syntax-variable: hsl(30, 70%, var(--c-syntax-lit));
-
-    /* Transition functions */
-    --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
-    --ease-in-out-quad: cubic-bezier(0.45, 0, 0.55, 1);
 }
 
 :root[data-theme='light'] {
@@ -172,6 +174,7 @@ body {
     background: var(--c-bg-base);
     font-size: 16px;
     font-family: var(--font-default), sans-serif;
+    font-weight: var(--font-default-weight);
     color: var(--c-text-default);
     padding: 0;
     margin: 0;
@@ -195,7 +198,7 @@ h4,
 h5,
 h6 {
     line-height: 1.2;
-    font-weight: 600;
+    font-weight: var(--font-headers-weight);
     color: var(--c-text-bright);
     font-family: var(--font-headers);
 }
