@@ -179,6 +179,7 @@ body {
     color: var(--c-text-default);
     padding: 0;
     margin: 0;
+    overflow-wrap: break-word;
 }
 
 * {
@@ -186,10 +187,16 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1;
-    flex-shrink: 1;
     min-width: 0px;
-    max-width: 100%;
     word-break: break-word;
+}
+
+img,
+video,
+canvas,
+svg {
+    max-width: 100%;
+    display: block;
 }
 
 h1,
