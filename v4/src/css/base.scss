@@ -86,35 +86,34 @@ $palletteNames: ('base', 'accent', 'success', 'danger');
     --c-text-success: var(--c-success-75);
     --c-text-default-inverted: var(--c-base-10);
     --c-text-bright-inverted: var(--c-base-0);
+    --c-text-selected: var(--c-base-0);
 
     /* Background colors */
     --c-bg-negative: var(--c-base-5);
     --c-bg-base: var(--c-base-8);
     --c-bg-subsurface: var(--c-base-10);
     --c-bg-surface: var(--c-base-12);
-    --c-bg-accent: var(--c-accent-80);
+    --c-bg-selected: var(--c-accent-80);
+    --c-bg-selected-control: var(--c-base-20);
 
     /* Border colors */
     --c-border-default: var(--c-base-25);
     --c-border-subtle: var(--c-base-18);
+    --c-border-focus: var(--c-accent-60);
 
     /* Action colors (links, buttons) */
     --c-action-primary: var(--c-accent-75);
     --c-action-primary-hover: var(--c-accent-85);
     --c-action-primary-alt: var(--c-accent-30);
-    --c-action-primary-alt-hover: var(--c-accent-40);
+    --c-action-primary-alt-hover: var(--c-accent-20);
     --c-action-secondary: var(--c-base-85);
-    --c-action-secondary-hover: var(--c-base-70);
-    --c-action-tertiary: var(--c-base-25);
-    --c-action-tertiary-hover: var(--c-base-40);
+    --c-action-secondary-hover: var(--c-base-65);
+    --c-action-tertiary: var(--c-base-50);
+    --c-action-tertiary-hover: var(--c-base-60);
     --c-action-danger: var(--c-danger-70);
     --c-action-danger-hover: var(--c-danger-80);
     --c-action-success: var(--c-success-60);
-    --c-action-success-hover: var(--c-success-70);
-
-    /* Selection colors */
-    --c-selection-primary: var(--c-accent-50);
-    --c-selection-secondary: var(--c-base-20);
+    --c-action-success-hover: var(--c-success-80);
 
     /* Syntax Highlighting */
     --c-syntax-comment: hsl(0, 0%, var(--c-syntax-lit));
@@ -147,7 +146,6 @@ $palletteNames: ('base', 'accent', 'success', 'danger');
     --c-bg-base: var(--c-base-95);
     --c-bg-subsurface: var(--c-base-92);
     --c-bg-surface: var(--c-base-90);
-    --c-bg-accent: var(--c-accent-50);
 
     /* Border colors */
     --c-border-default: var(--c-base-75);
@@ -160,16 +158,15 @@ $palletteNames: ('base', 'accent', 'success', 'danger');
     --c-action-primary-alt-hover: var(--c-accent-75);
     --c-action-secondary: var(--c-base-30);
     --c-action-secondary-hover: var(--c-base-50);
-    --c-action-tertiary: var(--c-base-80);
-    --c-action-tertiary-hover: var(--c-base-70);
+    --c-action-tertiary: var(--c-base-60);
+    --c-action-tertiary-hover: var(--c-base-50);
     --c-action-danger: var(--c-danger-40);
     --c-action-danger-hover: var(--c-danger-30);
     --c-action-success: var(--c-success-40);
     --c-action-success-hover: var(--c-success-30);
 
     /* Selection colors */
-    --c-selection-primary: var(--c-accent-80);
-    --c-selection-secondary: var(--c-accent-90);
+    --c-bg-selected-control: var(--c-accent-90);
 }
 
 body {
@@ -540,12 +537,12 @@ input[type='week']::-webkit-calendar-picker-indicator {
 }
 
 ::selection {
-    background: var(--c-accent-80);
-    color: var(--c-base-0);
+    background: var(--c-bg-selected);
+    color: var(--c-text-selected);
 }
 
 *:focus-visible {
-    outline: 2px solid var(--c-selection-primary);
+    outline: 2px solid var(--c-border-focus);
     outline-offset: 2px;
 }
 
@@ -639,8 +636,8 @@ input[type='week']::-webkit-calendar-picker-indicator {
 }
 
 .btn.tertiary {
-    --bg: var(--c-action-tertiary);
-    --bgHover: var(--c-action-tertiary-hover);
+    --bg: color-mix(in srgb, var(--c-action-tertiary) 30%, transparent);
+    --bgHover: color-mix(in srgb, var(--c-action-tertiary-hover) 50%, transparent);
     --fg: var(--c-text-default);
     --fgHover: var(--c-text-bright);
 }
@@ -652,24 +649,32 @@ input[type='week']::-webkit-calendar-picker-indicator {
 
 .btn.text,
 .btn.outline {
+    --bgHoverTranslucent: var(--c-action-primary);
     --bg: transparent;
-    --bgHover: var(--c-action-tertiary);
+    --bgHover: color-mix(in srgb, var(--bgHoverTranslucent) 20%, transparent);
     --fg: var(--c-text-accent);
     --fgHover: var(--c-text-accent);
 }
 
+.btn.outline {
+    --border: var(--fg);
+}
+
 .btn.text.secondary,
 .btn.outline.secondary {
+    --bgHoverTranslucent: var(--c-action-secondary);
     --fg: var(--c-action-secondary);
     --fgHover: var(--c-action-secondary);
 }
 
 .btn.text.tertiary {
+    --bgHoverTranslucent: var(--c-action-secondary);
     --fg: var(--c-action-secondary);
     --fgHover: var(--c-action-secondary);
 }
 
 .btn.outline.tertiary {
+    --bgHoverTranslucent: var(--c-action-tertiary);
     --fg: var(--c-action-secondary);
     --fgHover: var(--c-action-secondary);
     --border: var(--c-border-default);
@@ -677,18 +682,16 @@ input[type='week']::-webkit-calendar-picker-indicator {
 
 .btn.text.danger,
 .btn.outline.danger {
+    --bgHoverTranslucent: var(--c-action-danger);
     --fg: var(--c-action-danger);
     --fgHover: var(--c-action-danger);
 }
 
 .btn.text.success,
 .btn.outline.success {
+    --bgHoverTranslucent: var(--c-action-success);
     --fg: var(--c-action-success);
     --fgHover: var(--c-action-success);
-}
-
-.btn.outline {
-    --border: var(--fg);
 }
 
 /* default size */
@@ -902,7 +905,7 @@ label.control.contained {
 }
 
 label.control.contained:has(input:checked) {
-    background: var(--c-selection-secondary);
+    background: var(--c-bg-selected-control);
     color: var(--c-text-bright);
     border-color: var(--c-action-primary);
     box-shadow: 0px 0px 0px 1px var(--c-action-primary);
@@ -985,7 +988,7 @@ input[type='checkbox'].toggle::before {
 }
 
 input[type='checkbox'].toggle:checked {
-    background: var(--c-selection-secondary);
+    background: var(--c-bg-selected-control);
     border-color: var(--c-action-primary);
     box-shadow: 0px 0px 0px 1px var(--c-action-primary);
 }
