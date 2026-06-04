@@ -247,7 +247,7 @@ $textColors: ('default', 'bright', 'secondary', 'muted', 'danger', 'success', 'a
     }
 }
 
-$backgroundColors: ('default', 'negative', 'subsurface', 'surface', 'accent');
+$backgroundColors: ('base', 'negative', 'subsurface', 'surface');
 @each $color in $backgroundColors {
     .background-#{$color} {
         background: #{'var(--c-bg-#{$color})'};
