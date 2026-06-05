@@ -202,7 +202,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+details > summary {
     line-height: 1.2;
     font-weight: var(--font-headers-weight);
     color: var(--c-text-bright);
@@ -235,7 +236,8 @@ h2 {
     font-size: 1.75rem;
 }
 
-h3 {
+h3,
+details > summary {
     font-size: 1.25rem;
 }
 
@@ -252,7 +254,8 @@ h6 {
 }
 
 p,
-li {
+li,
+details {
     font-size: 1rem;
     line-height: 1.6;
     color: var(--c-text-default);
@@ -301,6 +304,52 @@ label {
 img {
     user-select: none;
     object-fit: cover;
+}
+
+details > div,
+details > p {
+    padding: 8px 12px;
+    padding-top: 4px;
+}
+
+summary {
+    list-style: none;
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+summary {
+    display: flex;
+    align-items: center;
+    user-select: none;
+    gap: 16px;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: calc(16px * var(--roundness-multiplier));
+    transition: 0.1s ease-in-out;
+    justify-content: space-between;
+    align-items: center;
+}
+
+summary:hover,
+summary:focus-visible {
+    background: color-mix(in srgb, var(--c-action-tertiary) 30%, transparent);
+    transition: none;
+}
+
+summary::after {
+    content: 'keyboard_arrow_right';
+    font-family: 'Material Symbols Rounded';
+    font-size: 24px;
+    line-height: 1;
+    color: var(--c-text-muted);
+    transition: 0.2s ease-in-out;
+}
+
+details[open] summary::after {
+    transform: rotate(90deg);
 }
 
 .table-container {
@@ -668,7 +717,7 @@ input[type='week']::-webkit-calendar-picker-indicator {
 }
 
 .btn.text.tertiary {
-    --bgHoverTranslucent: var(--c-action-secondary);
+    --bgHoverTranslucent: var(--c-action-tertiary);
     --fg: var(--c-action-secondary);
     --fgHover: var(--c-action-secondary);
 }
