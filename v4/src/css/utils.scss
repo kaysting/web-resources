@@ -61,9 +61,20 @@ $breakpoints: (
         grid-column: span 12; // Default to full width
     }
 
+    // 1. Set the default behavior for mobile (order: -1)
+    .order-first {
+        order: -1;
+    }
+
     // Loop through breakpoints to generate responsive classes (.col-md-6, etc.)
     @each $brk-name, $brk-width in $breakpoints {
         @media (min-width: #{$brk-width}) {
+            // 2. Generate responsive classes to RESET the order on larger screens
+            // Example: .order-md-reset will return the item to normal flow on desktop
+            .order-#{$brk-name}-reset {
+                order: 0;
+            }
+
             @for $i from 1 through 12 {
                 .col-#{$brk-name}-#{$i} {
                     grid-column: span #{$i};
@@ -71,10 +82,6 @@ $breakpoints: (
             }
         }
     }
-}
-
-.grid-order-reverse {
-    order: -1;
 }
 
 $align-basic: (center, start, end, stretch);
