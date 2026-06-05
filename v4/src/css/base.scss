@@ -207,7 +207,7 @@ details > summary {
     line-height: 1.2;
     font-weight: var(--font-headers-weight);
     color: var(--c-text-bright);
-    font-family: var(--font-headers);
+    font-family: var(--font-headers) sans-serif;
 }
 
 h1:not(:first-child),
