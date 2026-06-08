@@ -266,7 +266,9 @@ $backgroundColors: ('base', 'negative', 'subsurface', 'surface');
 }
 
 .container {
-    max-width: 1000px;
+    --width: 1000px;
+    max-width: var(--width);
+    width: min(100%, var(--width));
     margin: 0 auto;
     padding: 32px 16px;
 }

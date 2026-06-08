@@ -435,6 +435,7 @@ code:not(pre code) {
 
 pre code {
     width: fit-content;
+    max-width: 100%;
     background: var(--c-bg-surface);
     border: var(--border-thickness) solid var(--c-border-default);
     padding: 8px 12px;
