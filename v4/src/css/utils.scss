@@ -1,4 +1,5 @@
 @use 'sass:string';
+@use 'sass:map';
 
 $spacing-steps: (1, 2, 4, 8, 12, 16, 24, 32, 48, 64);
 $text-sizes: (10, 12, 13, 14, 15, 16, 18, 20, 24, 28, 32, 36, 42, 48, 54, 64, 72, 96);
@@ -53,12 +54,26 @@ $breakpoints: (
 
 /* 12-Column Grid System with Responsive Loops */
 .grid-12 {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    // 1. Mobile Default: Flexbox (destroys the 11 invisible horizontal gaps)
+    display: flex;
+    flex-direction: column;
     gap: 8px;
 
     .col {
-        grid-column: span 12; // Default to full width
+        width: 100%;
+        min-width: 0; // 2. Fixes the intrinsic width blowout for iframes/images!
+    }
+
+    // Switch to the actual 12-column grid at the 'sm' breakpoint
+    @media (min-width: map.get($breakpoints, 'sm')) {
+        display: grid;
+        // 3. Added minmax to prevent grid tracks from locking to content size
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+
+        .col {
+            width: auto;
+            grid-column: span 12; // Default to full width
+        }
     }
 
     // 1. Set the default behavior for mobile (order: -1)
