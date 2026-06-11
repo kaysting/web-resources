@@ -21,6 +21,7 @@
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     -moz-osx-font-smoothing: grayscale;
+    user-select: none;
 
     /* Variable settings */
     --filled: 1;
