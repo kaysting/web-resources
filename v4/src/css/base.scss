@@ -352,6 +352,20 @@ details[open] summary::after {
     transform: rotate(90deg);
 }
 
+hr {
+    height: 1px;
+    border: none;
+    border-top: var(--border-thickness) solid var(--c-border-default);
+}
+
+hr.accent {
+    border-color: var(--c-action-primary);
+}
+
+hr.thick {
+    border-width: calc(2 * var(--border-thickness));
+}
+
 .table-container {
     width: 100%;
     overflow-x: auto;
