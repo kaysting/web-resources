@@ -955,6 +955,8 @@ label.control {
     user-select: none;
     padding: 4px;
     line-height: 1.4;
+    color: var(--c-text-bright);
+    font-size: 15px;
 }
 
 label.control.contained {
