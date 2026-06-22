@@ -353,8 +353,17 @@ details[open] summary::after {
 
 hr {
     height: 1px;
+    margin: 1em 0px;
     border: none;
     border-top: var(--border-thickness) solid var(--c-border-default);
+}
+
+hr:last-child {
+    margin-bottom: 0px;
+}
+
+hr:first-child {
+    margin-top: 0px;
 }
 
 hr.accent {
