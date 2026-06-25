@@ -795,9 +795,13 @@ input[type='week']::-webkit-calendar-picker-indicator {
     --padding: 20px;
 }
 
-.btn.circle {
+.btn.circle,
+.btn.square {
     --padding: 0px;
     width: var(--height);
+}
+.btn.circle {
+    border-radius: 50%;
 }
 
 .btn:disabled,
