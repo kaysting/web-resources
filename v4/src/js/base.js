@@ -472,7 +472,7 @@ const hijackNativeDropdown = async selectElement => {
     const items = [];
     options.forEach(opt => {
         items.push({
-            label: opt.innerText,
+            label: opt.innerText?.trim() || opt.innerText,
             value: opt.value || opt.innerText,
             selected: opt.selected,
             disabled: opt.disabled
