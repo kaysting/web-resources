@@ -8,9 +8,15 @@
 
 .symbol {
     font-family: 'Material Symbols Rounded';
+    font-size: 24px;
+
+    /* Set width using em units to avoid CLS while allowing just changing font-size */
+    width: 1em;
+    height: 1em;
+
+    /* Render text correctly */
     font-weight: normal;
     font-style: normal;
-    font-size: 24px;
     display: inline-block;
     line-height: 1;
     text-transform: none;
@@ -19,9 +25,13 @@
     white-space: nowrap;
     direction: ltr;
     flex-shrink: 0;
+
+    /* Font smoothing */
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     -moz-osx-font-smoothing: grayscale;
+
+    /* Block selection */
     user-select: none;
 
     /* Variable settings */
