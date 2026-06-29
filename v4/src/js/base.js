@@ -14,6 +14,7 @@ const copyText = async text => {
         await navigator.clipboard.writeText(text);
     } catch (err) {
         console.error('Error copying to clipboard:', err);
+        throw err;
     }
 };
 
