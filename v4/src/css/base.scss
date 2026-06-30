@@ -36,45 +36,8 @@ $lightnesses: (
 
 $palletteNames: ('base', 'accent', 'success', 'danger');
 
-:root {
-    /* Color category properties */
-    --c-base-hue: 340;
-    --c-base-sat: 10%;
-
-    --c-accent-hue: 340;
-    --c-accent-sat: 60%;
-
-    --c-danger-hue: 0;
-    --c-danger-sat: 90%;
-
-    --c-success-hue: 150;
-    --c-success-sat: 60%;
-
-    --c-syntax-lit: 70%;
-
-    /* Fonts */
-    --font-default: 'Poppins';
-    --font-headers: 'Poppins';
-    --font-buttons: 'Poppins';
-    --font-code: 'Fira Code';
-    --font-default-weight: 400;
-    --font-headers-weight: 600;
-    --font-buttons-weight: 500;
-
-    /* Appearance settings */
-    --roundness-multiplier: 1;
-    --border-thickness: 1px;
-
-    /* Transition functions */
-    --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
-    --ease-in-out-quad: cubic-bezier(0.45, 0, 0.55, 1);
-
-    /* Color palettes */
-    @each $name in $palletteNames {
-        @each $l in $lightnesses {
-            --c-#{$name}-#{$l}: #{'hsl(var(--c-#{$name}-hue), var(--c-#{$name}-sat), #{$l}%)'};
-        }
-    }
+@mixin dark-colors {
+    color-scheme: dark;
 
     /* Text colors */
     --c-text-default: var(--c-base-90);
@@ -117,21 +80,10 @@ $palletteNames: ('base', 'accent', 'success', 'danger');
     --c-action-danger-hover: var(--c-danger-80);
     --c-action-success: var(--c-success-60);
     --c-action-success-hover: var(--c-success-80);
-
-    /* Syntax Highlighting */
-    --c-syntax-comment: hsl(0, 0%, var(--c-syntax-lit));
-    --c-syntax-namespace: hsl(0, 0%, var(--c-syntax-lit));
-    --c-syntax-storage-modifier-import: hsl(0, 0%, var(--c-syntax-lit));
-    --c-syntax-constant: hsl(208, 70%, var(--c-syntax-lit));
-    --c-syntax-entity: hsl(270, 70%, var(--c-syntax-lit));
-    --c-syntax-entity-tag: hsl(125, 70%, var(--c-syntax-lit));
-    --c-syntax-keyword: hsl(5, 70%, var(--c-syntax-lit));
-    --c-syntax-string: hsl(190, 70%, var(--c-syntax-lit));
-    --c-syntax-variable: hsl(30, 70%, var(--c-syntax-lit));
 }
 
-:root[data-theme='light'] {
-    --c-syntax-lit: 35%;
+@mixin light-colors {
+    color-scheme: light;
 
     /* Text colors */
     --c-text-default: var(--c-base-15);
@@ -173,6 +125,73 @@ $palletteNames: ('base', 'accent', 'success', 'danger');
 
     /* Selection colors */
     --c-bg-selected-control: var(--c-accent-90);
+
+    /* Syntax highlighting */
+    --c-syntax-lit: 35%;
+}
+
+:root {
+    /* Color category properties */
+    --c-base-hue: 340;
+    --c-base-sat: 10%;
+
+    --c-accent-hue: 340;
+    --c-accent-sat: 60%;
+
+    --c-danger-hue: 0;
+    --c-danger-sat: 90%;
+
+    --c-success-hue: 150;
+    --c-success-sat: 60%;
+
+    --c-syntax-lit: 70%;
+
+    /* Fonts */
+    --font-default: 'Poppins';
+    --font-headers: 'Poppins';
+    --font-buttons: 'Poppins';
+    --font-code: 'Fira Code';
+    --font-default-weight: 400;
+    --font-headers-weight: 600;
+    --font-buttons-weight: 500;
+
+    /* Appearance settings */
+    --roundness-multiplier: 1;
+    --border-thickness: 1px;
+
+    /* Transition functions */
+    --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+    --ease-in-out-quad: cubic-bezier(0.45, 0, 0.55, 1);
+
+    /* Color palettes */
+    @each $name in $palletteNames {
+        @each $l in $lightnesses {
+            --c-#{$name}-#{$l}: #{'hsl(var(--c-#{$name}-hue), var(--c-#{$name}-sat), #{$l}%)'};
+        }
+    }
+
+    @include dark-colors;
+
+    /* Syntax Highlighting */
+    --c-syntax-comment: hsl(0, 0%, var(--c-syntax-lit));
+    --c-syntax-namespace: hsl(0, 0%, var(--c-syntax-lit));
+    --c-syntax-storage-modifier-import: hsl(0, 0%, var(--c-syntax-lit));
+    --c-syntax-constant: hsl(208, 70%, var(--c-syntax-lit));
+    --c-syntax-entity: hsl(270, 70%, var(--c-syntax-lit));
+    --c-syntax-entity-tag: hsl(125, 70%, var(--c-syntax-lit));
+    --c-syntax-keyword: hsl(5, 70%, var(--c-syntax-lit));
+    --c-syntax-string: hsl(190, 70%, var(--c-syntax-lit));
+    --c-syntax-variable: hsl(30, 70%, var(--c-syntax-lit));
+}
+
+:root[data-theme='light'] {
+    @include light-colors;
+}
+
+@media (prefers-color-scheme: light) {
+    :root[data-theme='auto'] {
+        @include light-colors;
+    }
 }
 
 body {
