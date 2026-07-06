@@ -22,6 +22,8 @@ curl https://src.kaysting.dev/sh/lockdown-ssh.sh | bash
 
 Installs essential, commonly used packages. Requires sudo.
 
+Packages include `sqlite3` `build-essential` `speedtest-cli` `zip` `unzip`.
+
 ```
 curl https://src.kaysting.dev/sh/install-essentials.sh | bash
 ```
@@ -32,4 +34,12 @@ Install Node Version Manager and the current LTS version of Node.js as the curre
 
 ```
 curl https://src.kaysting.dev/sh/install-nvm.sh | bash
+```
+
+## All of the above
+
+Run all of the above for a complete server configuration.
+
+```
+curl https://src.kaysting.dev/sh/all.sh | bash
 ```

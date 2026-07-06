@@ -1,0 +1,16 @@
+echo Updating apt...
+curl https://src.kaysting.dev/sh/update.sh | bash
+
+echo Installing essential packages...
+curl https://src.kaysting.dev/sh/install-essentials.sh | bash
+
+echo Installing nvm...
+curl https://src.kaysting.dev/sh/install-nvm.sh | bash
+
+echo Installing pm2...
+npm i -g pm2
+
+echo Locking down SSH...
+curl https://src.kaysting.dev/sh/lockdown-ssh.sh | bash
+
+echo Done!
