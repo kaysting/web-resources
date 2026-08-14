@@ -269,7 +269,7 @@ $text-aligns: (center, right, left);
 }
 
 // Colors
-$textColors: ('default', 'bright', 'secondary', 'muted', 'danger', 'success', 'accent');
+$textColors: ('default', 'bright', 'secondary', 'muted', 'danger', 'success', 'warning', 'accent');
 @each $color in $textColors {
     .color-#{$color} {
         color: #{'var(--c-text-#{$color})'};

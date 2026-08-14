@@ -345,22 +345,22 @@ const showDropdown = (triggerElement, items = [], options = {}) =>
                 continue;
             }
 
-            const btn = createElement('button.btn.text.secondary.justify-start');
-            btn.role = 'menuitem';
+            const el = createElement('button.dropdown-item');
+            el.role = 'menuitem';
 
             // Change item color and state
             if (item.selected) {
-                if (!item.disabled) btn.classList.remove('text');
+                el.classList.add('selected');
                 opts.selectable = true;
             }
             if (item.danger) {
-                btn.classList.add('danger');
+                el.classList.add('danger');
             }
             if (item.success) {
-                btn.classList.add('success');
+                el.classList.add('success');
             }
             if (item.disabled) {
-                btn.disabled = true;
+                el.disabled = true;
             }
 
             // Add symbol/icon
@@ -368,29 +368,28 @@ const showDropdown = (triggerElement, items = [], options = {}) =>
                 const symbol = createElement('span.symbol.filled');
                 if (item.symbolOutlined) symbol.classList.remove('filled');
                 symbol.innerText = item.symbol;
-                btn.appendChild(symbol);
+                el.appendChild(symbol);
             } else if (item.icon || hasIcons) {
                 const icon = createElement('img.icon');
                 if (item.maskIcon) icon.classList.add('img-mask');
                 icon.src = item.icon ?? '';
                 if (!item.icon) icon.classList.add('invisible');
-                btn.appendChild(icon);
+                el.appendChild(icon);
             }
 
             // Add label
-            const label = createElement('span.label.flex-grow.text-left');
+            const label = createElement('span.label');
             label.innerText = item.label;
-            btn.appendChild(label);
+            el.appendChild(label);
 
             // Handle selection
-            btn.addEventListener('click', async () => {
+            el.addEventListener('click', async () => {
                 let res = null;
                 if (item.onClick) res = await item.onClick();
                 resolve(res ?? item.value ?? item.label);
                 popover.hide();
             });
-
-            dropdown.appendChild(btn);
+            dropdown.appendChild(el);
         }
 
         popover.show(triggerElement, {
@@ -399,21 +398,21 @@ const showDropdown = (triggerElement, items = [], options = {}) =>
         dropdown.focus();
 
         if (opts.selectable) {
-            const list = dropdown.querySelectorAll('.btn:not(:disabled)');
+            const list = dropdown.querySelectorAll('.dropdown-item:not(:disabled)');
             let index = 0;
 
             list.forEach((item, i) => {
-                if (!item.classList.contains('text')) index = i;
+                if (item.classList.contains('selected')) index = i;
             });
 
             const select = idx => {
                 const el = list[idx];
                 if (!el) return;
-                list.forEach(btn => {
-                    btn.classList.add('text');
-                    btn.setAttribute('aria-selected', 'false');
+                list.forEach(item => {
+                    item.classList.remove('selected');
+                    item.setAttribute('aria-selected', 'false');
                 });
-                el.classList.remove('text');
+                el.classList.add('selected');
                 el.setAttribute('aria-selected', 'true');
                 el.focus();
                 index = idx;
@@ -425,7 +424,7 @@ const showDropdown = (triggerElement, items = [], options = {}) =>
             });
 
             dropdown.addEventListener('keydown', e => {
-                const selected = dropdown.querySelector('.btn:not(.text)');
+                const selected = dropdown.querySelector('.dropdown-item.selected');
                 const key = [e.shiftKey ? 'Shift' : '', e.key].filter(Boolean).join('-');
                 switch (key) {
                     // Previous item
@@ -560,10 +559,10 @@ const showModal = (title, body, actions = [], options = {}) => {
 
     dialog.classList.add('modal');
     dialog.setAttribute('closedby', closedby);
-    if (width) dialog.style.setProperty(`--width`, `${width}px`);
-    if (expandWidth) dialog.style.width = `${width}px`;
-    if (height) dialog.style.setProperty(`--height`, `${height}px`);
-    if (expandHeight) dialog.style.height = `${height}px`;
+    if (width) dialog.style.setProperty('--width', `${width}px`);
+    if (height) dialog.style.setProperty('--height', `${height}px`);
+    if (expandWidth) dialog.classList.add('expand-width');
+    if (expandHeight) dialog.classList.add('expand-height');
     if (fullscreenable) dialog.classList.add('fullscreenable');
 
     // Function to close with animation
